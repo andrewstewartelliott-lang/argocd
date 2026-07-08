@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     path: applications/
-    repoURL: https://github.com/andrewstewartelliott-lang/argo
+    repoURL: https://github.com/andrewstewartelliott-lang/argocd
     targetRevision: main
   syncPolicy:
     automated:
