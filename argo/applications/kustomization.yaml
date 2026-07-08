@@ -6,4 +6,5 @@ resources:
 - prometheus/application.yaml
 - prometheus-node-exporter/application.yaml
 - grafana/dashboards/argo-cd.yaml
+- grafana/dashboards/node.yaml
 - kube-state-metrics/application.yaml
