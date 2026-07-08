@@ -1,21 +1,4 @@
 apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: node-exporter-dashboard
-  namespace: argocd
-  labels:
-    app: kube-prometheus-stack-grafana
-    app.kubernetes.io/instance: kube-prometheus-stack
-    app.kubernetes.io/managed-by: Helm
-    app.kubernetes.io/part-of: kube-prometheus-stack
-    app.kubernetes.io/version: 44.3.0
-    argocd.argoproj.io/instance: kube-prometheus-stack
-    chart: kube-prometheus-stack-44.3.0
-    prometheus: argo-cd-grafana
-    grafana_dashboard: "1"
-    heritage: Helm
-    release: kube-prometheus-stack
----
 data:
   node-exporter.json: |-
     {
@@ -15547,3 +15530,19 @@ data:
       "version": 102,
       "weekStart": ""
     }
+kind: ConfigMap
+metadata:
+  labels:
+    app: kube-prometheus-stack-grafana
+    app.kubernetes.io/instance: kube-prometheus-stack
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: kube-prometheus-stack
+    app.kubernetes.io/version: 44.3.0
+    argocd.argoproj.io/instance: kube-prometheus-stack
+    chart: kube-prometheus-stack-44.3.0
+    prometheus: argo-cd-grafana
+    grafana_dashboard: "1"
+    heritage: Helm
+    release: kube-prometheus-stack
+  name: node-exporter-dashboard
+  namespace: argocd
