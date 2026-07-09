@@ -155,22 +155,6 @@ bash argo/trigger_alert.sh
 
 This sends a sample alert to Alertmanager and then resolves it, which is useful for verifying alert flow.
 
-
-
-
-
-helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-helm repo update
-helm install kube-state-metrics prometheus-community/kube-state-metrics \
-  --namespace monitoring --create-namespace
-
-
-
-
-
-
-
-
   ## Notes
 
 - The base Application references the GitHub repository URL in argo/base/base.yaml. If you fork this repository or use a different repository name, update that value to match your environment.

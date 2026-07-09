@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: golang-api
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+  labels:
+    release: golang-api
+spec:
+  destination:
+    name: in-cluster
+    namespace: argocd
+  project: default
+  source:
+    repoURL: 'https://github.com/andrewstewartelliott-lang/golang-api/tree/main/golang'
+    targetRevision: 0.1.0
+    helm:
+      values: |-
+        replicaCount: 1
+    chart: tyk-sre-assignment-chart
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - ServerSideApply=true

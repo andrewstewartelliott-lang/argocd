@@ -8,3 +8,4 @@ resources:
 - grafana/dashboards/argo-cd.yaml
 - grafana/dashboards/node.yaml
 - kube-state-metrics/application.yaml
+- golang-api/golang.yaml
