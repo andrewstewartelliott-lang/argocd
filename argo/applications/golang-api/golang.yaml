@@ -13,7 +13,7 @@ spec:
     namespace: argocd
   project: default
   source:
-    repoURL: 'https://andrewstewartelliott-lang.github.io/helm-charts'
+    repoURL: 'https://github.com/andrewstewartelliott-lang/helm-charts'
     targetRevision: 0.1.0
     helm:
       values: |-
