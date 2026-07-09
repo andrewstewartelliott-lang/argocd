@@ -86,11 +86,64 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 
 Then open:
 
-```text
+```
 https://localhost:8080/
 ```
 
 If you are using kind or a local cluster, you may need to adjust your cluster configuration so port 8080 is exposed.
+
+## Access the prometheus UI
+
+```bash
+kubectl port-forward service/kube-prometheus-stack-prometheus -n argocd 9090:9090
+```
+
+```text
+http://localhost:9090/
+```
+
+## Access grafana UI
+
+```bash
+kubectl port-forward service/kube-prometheus-stack-grafana -n argocd 9092:80
+```
+
+Granafa secret:
+
+```bash
+kubectl get secret \
+-n argocd \
+kube-prometheus-stack-grafana \
+-o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+```
+
+```text
+http://localhost:9092/
+```
+
+## ArgoCD cli with kind
+
+```bash
+kubectl config get-contexts -o name
+```
+
+```bash
+argocd cluster add kind-kind
+```
+
+```bash
+argocd login localhost:8080
+```
+
+```bash
+andrew@andrews-MacBook-Pro kind % argocd app list
+NAME                               CLUSTER                         NAMESPACE  PROJECT  STATUS  HEALTH   SYNCPOLICY  CONDITIONS  REPO                                                     PATH                                TARGET
+argocd/base                        https://kubernetes.default.svc  argocd     default  Synced  Healthy  Auto-Prune  <none>      https://github.com/andrewstewartelliott-lang/argocd      argo/applications/                  main
+argocd/kube-prometheus-stack       in-cluster                      argocd     default  Synced  Healthy  Auto-Prune  <none>      https://prometheus-community.github.io/helm-charts                                           45.6.0
+argocd/kube-prometheus-stack-crds  in-cluster                      argocd     default  Synced  Healthy  Auto-Prune  <none>      https://github.com/prometheus-community/helm-charts.git  charts/kube-prometheus-stack/crds/  kube-prometheus-stack-44.3.0
+argocd/kube-state-metrics          in-cluster                      argocd     default  Synced  Healthy  Auto-Prune  <none>      https://prometheus-community.github.io/helm-charts                                           7.4.0
+argocd/prometheus-node-exporter    in-cluster                      argocd     default  Synced  Healthy  Auto-Prune  <none>      https://prometheus-community.github.io/helm-charts                                           4.13.0
+```
 
 ## Test Alertmanager
 
@@ -102,12 +155,23 @@ bash argo/trigger_alert.sh
 
 This sends a sample alert to Alertmanager and then resolves it, which is useful for verifying alert flow.
 
-## Notes
 
-- The base Application references the GitHub repository URL in argo/base/base.yaml. If you fork this repository or use a different repository name, update that value to match your environment.
-- The monitoring stack is configured to scrape Argo CD metrics from the cluster service endpoints.
+
+
 
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
 helm install kube-state-metrics prometheus-community/kube-state-metrics \
   --namespace monitoring --create-namespace
+
+
+
+
+
+
+
+
+  ## Notes
+
+- The base Application references the GitHub repository URL in argo/base/base.yaml. If you fork this repository or use a different repository name, update that value to match your environment.
+- The monitoring stack is configured to scrape Argo CD metrics from the cluster service endpoints.
