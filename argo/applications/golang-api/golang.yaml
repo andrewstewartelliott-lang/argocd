@@ -18,7 +18,7 @@ spec:
     helm:
       values: |-
         replicaCount: 1
-    chart: golang/tyk-sre-assignment-chart
+    chart: tyk-sre-assignment-chart
   syncPolicy:
     automated:
       prune: true
