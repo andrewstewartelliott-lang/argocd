@@ -18,7 +18,7 @@ spec:
     helm:
       values: |-
         replicaCount: 1
-    chart: k8s-viewer/chart-golang-k8s-viewer
+    chart: chart-golang-k8s-viewer
   syncPolicy:
     automated:
       prune: true
