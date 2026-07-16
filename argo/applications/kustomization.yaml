@@ -8,4 +8,5 @@ resources:
 - grafana/dashboards/argo-cd.yaml
 - grafana/dashboards/node.yaml
 - kube-state-metrics/application.yaml
-- golang-api/golang.yaml
+- k8s-viewer/k8s-viewer.yaml
+- k8s-viewer/clusterrole.yaml

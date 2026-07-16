@@ -1,24 +1,24 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: golang-api
+  name: k8s-viewer
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "3"
   labels:
-    release: golang-api
+    release: k8s-viewer
 spec:
   destination:
     name: in-cluster
     namespace: argocd
   project: default
   source:
-    repoURL: 'https://github.com/andrewstewartelliott-lang/helm-charts'
-    targetRevision: 0.1.0
+    repoURL: 'https://andrewstewartelliott-lang.github.io/golang-k8s-view'
+    targetRevision: 0.1.6
     helm:
       values: |-
         replicaCount: 1
-    chart: tyk-sre-assignment-chart
+    chart: k8s-viewer
   syncPolicy:
     automated:
       prune: true
