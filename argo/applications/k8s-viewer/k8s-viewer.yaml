@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: k8s-viewer
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+  labels:
+    release: k8s-viewer
+spec:
+  destination:
+    name: in-cluster
+    namespace: argocd
+  project: default
+  source:
+    repoURL: 'https://andrewstewartelliott-lang.github.io/golang-k8s-view'
+    targetRevision: 0.1.6
+    helm:
+      values: |-
+        replicaCount: 1
+    chart: k8s-viewer
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - ServerSideApply=true

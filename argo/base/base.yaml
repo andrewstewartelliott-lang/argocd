@@ -9,8 +9,8 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: applications/
-    repoURL: https://github.com/andrewstewartelliott-lang/argo
+    path: argo/applications/
+    repoURL: https://github.com/andrewstewartelliott-lang/argocd
     targetRevision: main
   syncPolicy:
     automated:

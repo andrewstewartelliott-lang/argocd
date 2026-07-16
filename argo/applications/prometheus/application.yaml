@@ -23,6 +23,7 @@ spec:
             serviceMonitorSelector:
               matchLabels:
                 prometheus: argo-cd-grafana
+                node_exporter: "true"
             additionalScrapeConfigs: |
               - job_name: 'argocd'
                 scrape_interval: 30s
@@ -34,6 +35,16 @@ spec:
                 scrape_timeout: 10s
                 static_configs:
                   - targets: ['alertmanager-operated.argocd.svc.cluster.local:9093']
+              - job_name: 'prometheus-node-exporter'
+                scrape_interval: 30s
+                scrape_timeout: 10s
+                static_configs:
+                  - targets: ['prometheus-node-exporter.argocd.svc.cluster.local:9100']
+              - job_name: 'kube-state-metrics'
+                scrape_interval: 30s
+                scrape_timeout: 10s
+                static_configs:
+                  - targets: ['kube-state-metrics.argocd.svc.cluster.local:8080']
         alertmanager:
           enabled: true
         nodeExporter:
