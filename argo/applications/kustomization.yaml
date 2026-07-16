@@ -9,4 +9,3 @@ resources:
 - grafana/dashboards/node.yaml
 - kube-state-metrics/application.yaml
 - k8s-viewer/k8s-viewer.yaml
-- k8s-viewer/clusterrole.yaml
