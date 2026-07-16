@@ -14,7 +14,7 @@ spec:
   project: default
   source:
     repoURL: 'https://andrewstewartelliott-lang.github.io/golang-k8s-view'
-    targetRevision: 0.1.6
+    targetRevision: 1.6.0
     helm:
       values: |-
         replicaCount: 1
