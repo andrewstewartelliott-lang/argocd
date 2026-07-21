@@ -7,4 +7,3 @@ resources:
 - prometheus-node-exporter/application.yaml
 - grafana/dashboards/argo-cd.yaml
 - kube-state-metrics/application.yaml
-- k8s-viewer/k8s-viewer.yaml
