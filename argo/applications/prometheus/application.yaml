@@ -45,6 +45,11 @@ spec:
                 scrape_timeout: 10s
                 static_configs:
                   - targets: ['kube-state-metrics.argocd.svc.cluster.local:8080']
+              - job_name: 'golang-k8s-view'
+                scrape_interval: 30s
+                scrape_timeout: 10s
+                static_configs:
+                  - targets: ['k8s-viewer-chart-golang-k8s-viewer.argocd.svc.cluster.local:8080']
         alertmanager:
           enabled: true
         nodeExporter:
