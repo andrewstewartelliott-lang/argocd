@@ -53,7 +53,7 @@ spec:
         alertmanager:
           enabled: true
         nodeExporter:
-          enabled: false
+          enabled: true
     chart: kube-prometheus-stack
   syncPolicy:
     automated:
