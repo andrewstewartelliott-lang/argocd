@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: clickstack-operators
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+  labels:
+    release: clickstack-operators
+spec:
+  destination:
+    name: in-cluster
+    namespace: argocd
+  project: default
+  source:
+    repoURL: 'https://clickhouse.github.io/ClickStack-helm-charts'
+    targetRevision: 1.1.0
+    chart: clickstack-operators
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: clickstack
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
+  labels:
+    release: clickstack
+spec:
+  destination:
+    name: in-cluster
+    namespace: argocd
+  project: default
+  source:
+    repoURL: 'https://clickhouse.github.io/ClickStack-helm-charts'
+    targetRevision: 3.1.1
+    chart: clickstack
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
