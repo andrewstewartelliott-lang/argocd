@@ -7,5 +7,5 @@ resources:
 #- grafana/dashboards/argo-cd.yaml
 #- grafana/dashboards/golang-k8s-view.yaml
 - kube-state-metrics/application.yaml
-- clickstack/clickstack-operators.yaml
+#- clickstack/clickstack-operators.yaml
 - clickstack/clickstack.yaml
