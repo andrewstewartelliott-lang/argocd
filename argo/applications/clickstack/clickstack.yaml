@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: clickstack
-  namespace: argocd
+  namespace: default
   annotations:
     argocd.argoproj.io/sync-wave: "4"
   labels:
@@ -10,7 +10,7 @@ metadata:
 spec:
   destination:
     name: in-cluster
-    namespace: argocd
+    namespace: default
   project: default
   source:
     repoURL: 'https://clickhouse.github.io/ClickStack-helm-charts'
