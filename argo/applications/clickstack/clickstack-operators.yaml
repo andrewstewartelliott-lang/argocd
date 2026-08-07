@@ -5,6 +5,9 @@ metadata:
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "3"
+    app.kubernetes.io/managed-by: "Helm"
+    meta.helm.sh/release-name: clickstack-operators
+    meta.helm.sh/release-namespace: argocd
   labels:
     release: clickstack-operators
 spec:
