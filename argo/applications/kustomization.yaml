@@ -9,4 +9,3 @@ resources:
 - kube-state-metrics/application.yaml
 #- clickstack/clickstack-operators.yaml
 #- clickstack/clickstack.yaml
-- zap/rgb.yaml
