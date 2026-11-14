@@ -9,3 +9,4 @@ resources:
 - kube-state-metrics/application.yaml
 #- clickstack/clickstack-operators.yaml
 #- clickstack/clickstack.yaml
+- kyverno-policies/application.yaml
