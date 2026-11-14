@@ -8,4 +8,5 @@ resources:
 #- grafana/dashboards/golang-k8s-view.yaml
 - kube-state-metrics/application.yaml
 #- clickstack/clickstack-operators.yaml
-- clickstack/clickstack.yaml
+#- clickstack/clickstack.yaml
+- zap/rgb.yaml
